@@ -1,0 +1,486 @@
+<div style="font-family: sans-serif; text-align:center; margin-bottom: 50px;">
+  <h3>EMPLOI DU TEMPS</h3>
+  <hr style="width:90%" />
+  <p style="font-weight: bold; font-size:1rem">Ecole du Disciple de Jésus Christ</p>
+  <p style="font-size:0.8rem">2019-2020</p>
+  </div>
+  
+  <style>
+  body {
+    text-align: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    text-align: center;
+    color: #333;
+    font-family: sans-serif;
+    margin-top: 40px;
+  }
+  
+  /* GRID HEADER */
+  .day {
+    border: 2px solid black;
+    border-bottom-width: 0;
+  }
+  .day:first-child {
+    grid-column: 2;
+    border-right: 0;
+  }
+    .day { /* days cells */
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .day div { /* day name */
+      grid-column: 1 / -1;
+      padding-top: 8px;
+      border-bottom-width: 1px;
+      border-bottom-style: dotted;
+      font-weight: bold;
+    }
+    .day span {
+      grid-row: 2;
+      border: 1px solid #888;
+      border-top-width: 0;
+      border-bottom-width: 0;
+      font-size: 0.9rem;
+      padding: 2px;
+    }
+    .day span:nth-child(2),
+    .day span:last-child {
+      border-left: none;
+      border-right: none;
+    }
+  
+    /* GRID TOPICS */
+    .topic {
+      grid-column: 1;
+      height: 40px;
+      padding: 4px;
+      border: 2px solid black;
+      border-right: 0;
+      border-bottom: 0;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .topic:nth-child(16) { /* Hymnologie */
+      border-bottom: 2px solid black;
+    }
+  
+    /* COLORS CELLS */
+    .color-cell { /* colors cells */
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-column: 2 / -1;
+    }
+    .color-cell:last-child {
+      border-bottom: none;
+    }
+    .color-cell.at { grid-row: 2; }
+    .color-cell.nt { grid-row: 3; }
+    .color-cell.gb { grid-row: 4; }
+    .color-cell.hb { grid-row: 5; }
+    .color-cell.gk { grid-row: 6; }
+    .color-cell.hi { grid-row: 7; }
+    .color-cell.he { grid-row: 8; }
+    .color-cell.ts { grid-row: 9; }
+    .color-cell.eb { grid-row: 10; }
+    .color-cell.her { grid-row: 11; }
+    .color-cell.ch { grid-row: 12; }
+    .color-cell.hom { grid-row: 13; }
+    .color-cell.bib { grid-row: 14; }
+    .color-cell.hym { grid-row: 15; }
+      .color-cell.at div {
+        border-top: 2px solid black;
+      }
+      .color-cell div {
+        border: 1px solid #888;
+        border-bottom: none;
+      }
+      .color-cell div:first-child {
+        border-left-width: 2px;
+        border-left-color: black;
+      }
+      .color-cell div:not(:last-child) {
+        border-right-width: 0;
+      }
+      .color-cell div:nth-child(5) {
+        border-left: 2px solid black;
+      }
+      .color-cell div:last-child {
+        border-right-width: 2px;
+        border-right-color: black;
+      }
+      .color-cell.hym div { /* last row */
+        border-bottom: 2px solid black;
+      }
+  
+    /* Courses colors */
+    .color-cell span {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .a1-s1, .a1-s2, .a1-s3, .a1-s4,
+    .a2-s1, .a2-s2, .a2-s3, .a2-s4,
+    .a3-s1, .a3-s2, .a3-s3, .a3-s4 {
+      opacity: 0.3;
+    }
+  
+    .a1-s1 { background: hsl(197, 88%, 85%); }
+    .a1-s2 { background: hsl(197, 89%, 60%); }
+    .a1-s3 { background: hsl(197, 89%, 35%); }
+    .a1-s4 { background: hsl(197, 89%, 10%); }
+  
+    .a2-s1 { background: hsl(352, 100%, 85%); }
+    .a2-s2 { background: hsl(352, 100%, 60%); }
+    .a2-s3 { background: hsl(352, 100%, 35%); }
+    .a2-s4 { background: hsl(352, 100%, 10%); }
+  
+    .a3-s1 { background: hsl(146, 87%, 85%); }
+    .a3-s2 { background: hsl(146, 87%, 60%); }
+    .a3-s3 { background: hsl(146, 87%, 35%); }
+    .a3-s4 { background: hsl(146, 87%, 10%); }
+  
+    /* Controls courses colors */
+    input {
+      display: inline-block;
+      margin-top: 20px;
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #999;
+      box-shadow: 1px 1px 1px #000;
+      font-family: sans-serif;
+      color: white;
+      text-align: center;
+      text-shadow: 1px 1px 1px #ddd;
+      transition: 90ms;
+      width: 20%;
+    }
+    input:focus { outline: none !important; transform: scale(0.9); }
+    input[class*=a1]:focus { box-shadow: 0 0 10px hsl(197, 88%, 60%); }
+    input[class*=a2]:focus { box-shadow: 0 0 10px hsl(352, 100%, 60%); }
+    input[class*=a3]:focus { box-shadow: 0 0 10px hsl(146, 87%, 60%); }
+    input[class*=a1-s1] { background: hsl(197, 88%, 85%); }
+    input[class*=a1-s2] { background: hsl(197, 88%, 60%); }
+    input[class*=a1-s3] { background: hsl(197, 88%, 35%); }
+    input[class*=a1-s4] { background: hsl(197, 88%, 10%); }
+    input[class*=a2-s1] { background: hsl(352, 100%, 85%); }
+    input[class*=a2-s2] { background: hsl(352, 100%, 60%); }
+    input[class*=a2-s3] { background: hsl(352, 100%, 35%); }
+    input[class*=a2-s4] { background: hsl(352, 100%, 10%); }
+    input[class*=a3-s1] { background: hsl(146, 87%, 85%); }
+    input[class*=a3-s2] { background: hsl(146, 87%, 60%); }
+    input[class*=a3-s3] { background: hsl(146, 87%, 35%); }
+    input[class*=a3-s4] { background: hsl(146, 87%, 10%); }
+  
+    /* YEAR 1 */
+    .control-a1-s1:focus ~ .grid-container .a1-s1 {
+      background: hsl(197, 88%, 85%);
+      opacity: 1;
+    }
+    .control-a1-s1:focus ~ .grid-container .color-cell span:not(.a1-s1) {
+      opacity: 0;
+    }
+    .control-a1-s2:focus ~ .grid-container .a1-s2 {
+      background: hsl(197, 88%, 60%);
+      opacity: 1;
+    }
+    .control-a1-s2:focus ~ .grid-container .color-cell span:not(.a1-s2) {
+      opacity: 0;
+    }
+    .control-a1-s3:focus ~ .grid-container .a1-s3 {
+      background: hsl(197, 88%, 35%);
+      opacity: 1;
+    }
+    .control-a1-s3:focus ~ .grid-container .color-cell span:not(.a1-s3) {
+      opacity: 0;
+    }
+    .control-a1-s4:focus ~ .grid-container .a1-s4 {
+      background: hsl(197, 88%, 10%);
+      opacity: 1;
+    }
+    .control-a1-s4:focus ~ .grid-container .color-cell span:not(.a1-s4) {
+      opacity: 0;
+    }
+    /* YEAR 2 */
+    .control-a2-s1:focus ~ .grid-container .a2-s1 {
+      background: hsl(352, 100%, 85%);
+      opacity: 1;
+    }
+    .control-a2-s1:focus ~ .grid-container .color-cell span:not(.a2-s1) {
+      opacity: 0;
+    }
+    .control-a2-s2:focus ~ .grid-container .a2-s2 {
+      background: hsl(352, 100%, 60%);
+      opacity: 1;
+    }
+    .control-a2-s2:focus ~ .grid-container .color-cell span:not(.a2-s2) {
+      opacity: 0;
+    }
+    .control-a2-s3:focus ~ .grid-container .a2-s3 {
+      background: hsl(352, 100%, 35%);
+      opacity: 1;
+    }
+    .control-a2-s3:focus ~ .grid-container .color-cell span:not(.a2-s3) {
+      opacity: 0;
+    }
+    .control-a2-s4:focus ~ .grid-container .a2-s4 {
+      background: hsl(352, 100%, 10%);
+      opacity: 1;
+    }
+    .control-a2-s4:focus ~ .grid-container .color-cell span:not(.a2-s4) {
+      opacity: 0;
+    }
+    /* YEAR 3 */
+    .control-a3-s1:focus ~ .grid-container .a3-s1 {
+      background: hsl(146, 87%, 85%);
+      opacity: 1;
+    }
+    .control-a3-s1:focus ~ .grid-container .color-cell span:not(.a3-s1) {
+      opacity: 0;
+    }
+    .control-a3-s2:focus ~ .grid-container .a3-s2 {
+      background: hsl(146, 87%, 60%);
+      opacity: 1;
+    }
+    .control-a3-s2:focus ~ .grid-container .color-cell span:not(.a3-s2) {
+      opacity: 0;
+    }
+    .control-a3-s3:focus ~ .grid-container .a3-s3 {
+      background: hsl(146, 87%, 35%);
+      opacity: 1;
+    }
+    .control-a3-s3:focus ~ .grid-container .color-cell span:not(.a3-s3) {
+      opacity: 0;
+    }
+    .control-a3-s4:focus ~ .grid-container .a3-s4 {
+      background: hsl(146, 87%, 10%);
+      opacity: 1;
+    }
+    .control-a3-s4:focus ~ .grid-container .color-cell span:not(.a3-s4) {
+      opacity: 0;
+    }
+  </style>
+  
+  <input readonly class="control-a1-s1" value="A1 S1" />
+  <input readonly class="control-a1-s2" value="A1 S2" />
+  <input readonly class="control-a1-s3" value="A1 S3" />
+  <input readonly class="control-a1-s4" value="A1 S4" />
+  <div></div>
+  <input readonly class="control-a2-s1" value="A2 S1" />
+  <input readonly class="control-a2-s2" value="A2 S2" />
+  <input readonly class="control-a2-s3" value="A2 S3" />
+  <input readonly class="control-a2-s4" value="A2 S4" />
+  <div></div>
+  <input readonly class="control-a3-s1" value="A3 S1" />
+  <input readonly class="control-a3-s2" value="A3 S2" />
+  <input readonly class="control-a3-s3" value="A3 S3" />
+  <input readonly class="control-a3-s4" value="A3 S4" />
+  
+  <div class="grid-container">
+    <!-- DAYS -->
+    <div class="day">
+      <div>Jeudi</div>
+      <span>18.15<br>18.55</span>
+      <span>18.55<br>19.35</span>
+      <span>19.45<br>20.25</span>
+      <span>20.25<br>21.05</span>
+    </div>
+    <div class="day">
+      <div>Samedi</div>
+      <span>09.15<br>09.55</span>
+      <span>09.55<br>10.35</span>
+      <span>10.45<br>11.25</span>
+      <span>11.25<br>12.05</span>
+    </div>
+  
+    <!-- TOPICS -->
+    <div class="topic">Ancien<br>Testament</div>
+    <div class="topic">Nouveau<br>Testament</div>
+    <div class="topic">Géographie<br>Biblique</div>
+    <div class="topic">Hébreu<br>Biblique</div>
+    <div class="topic">Grec<br>Koinè</div>
+    <div class="topic">Histoire<br>d'Israël</div>
+    <div class="topic">Histoire<br>de l'Eglise</div>
+    <div class="topic">Théologie<br>Systématique</div>
+    <div class="topic">Ethique<br>Biblique</div>
+    <div class="topic">Hérésiologie</div>
+    <div class="topic">Christologie</div>
+    <div class="topic">Homilétique</div>
+    <div class="topic">Bibliologie</div>
+    <div class="topic">Hymnologie</div>
+  
+    <!-- COLORS CELLS -->
+    <div class="color-cell at">
+      <!-- Jeudi -->
+      <div><span class="a3 a3-s2"></span></div>
+      <div><span class="a3 a3-s2"></span></div>
+      <div><span class="a1 a1-s1 a1-s3"></span></div>
+      <div><span class="a1 a1-s1 a1-s3"></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class="a3 a3-s1"></span></div>
+      <div><span class="a3 a3-s1"></span></div>
+    </div>
+    <div class="color-cell nt">
+      <!-- Jeudi -->
+      <div><span class="a1 a3 a1-s2 a3-s4"></span></div>
+      <div><span class="a1 a3 a1-s2 a3-s4"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a3 a3-s2"></span></div>
+      <div><span class="a3 a3-s2"></span></div>
+      <div><span class="a1 a1-s3"></span></div>
+      <div><span class="a1 a1-s3"></span></div>
+    </div>
+    <div class="color-cell gb">
+      <!-- Jeudi -->
+      <div><span class="a1 a1-s1"></span></div>
+      <div><span class="a1 a1-s1"></span></div>
+      <div><span class="a1 a1-s2"></span></div>
+      <div><span class="a1 a1-s2"></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell hb">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell gk">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a3 a3-s3"></span></div>
+      <div><span class="a3 a3-s3"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell hi">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a1 a3 a1-s2 a1-s4 a3-s1"></span></div>
+      <div><span class="a1 a3 a1-s2 a1-s4 a3-s1"></span></div>
+      <div><span class="a3 a3-s3"></span></div>
+      <div><span class="a3 a3-s3"></span></div>
+    </div>
+    <div class="color-cell he">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class="a3 a3-s1 a3-s4"></span></div>
+      <div><span class="a3 a3-s1 a3-s4"></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell ts">
+      <!-- Jeudi -->
+      <div><span class="a1 a1-s3"></span></div>
+      <div><span class="a1 a1-s3"></span></div>
+      <div><span class="a1 a3 a1-s4 a3-s2 a3-s3"></span></div>
+      <div><span class="a1 a3 a1-s4 a3-s2 a3-s3"></span></div>
+      <!-- Samedi -->
+      <div><span class="a1 a1-s1"></span></div>
+      <div><span class="a1 a1-s1"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell eb">
+      <!-- Jeudi -->
+      <div><span class="a3 a3-s1"></span></div>
+      <div><span class="a3 a3-s1"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell her">
+      <!-- Jeudi -->
+      <div><span class="a3 a3-s3"></span></div>
+      <div><span class="a3 a3-s3"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a1 a1-s3"></span></div>
+      <div><span class="a1 a1-s3"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell ch">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a3 a3-s4"></span></div>
+      <div><span class="a3 a3-s4"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+    </div>
+    <div class="color-cell hom">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class="a3 a3-s4"></span></div>
+      <div><span class="a3 a3-s4"></span></div>
+      <div><span class="a3 a3-s2 a3-s4"></span></div>
+      <div><span class="a3 a3-s2 a3-s4"></span></div>
+    </div>
+    <div class="color-cell bib">
+      <!-- Jeudi -->
+      <div><span class="a1 a1-s4"></span></div>
+      <div><span class="a1 a1-s4"></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class="a1 a1-s1"></span></div>
+      <div><span class="a1 a1-s1"></span></div>
+    </div>
+    <div class="color-cell hym">
+      <!-- Jeudi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <!-- Samedi -->
+      <div><span class=""></span></div>
+      <div><span class=""></span></div>
+      <div><span class="a1 a3 a1-s2 a1-s4 a3-s2 a3-s4"></span></div>
+      <div><span class="a1 a3 a1-s2 a1-s4 a3-s2 a3-s4"></span></div>
+    </div>
+  </div>
