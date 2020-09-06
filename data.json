@@ -1,0 +1,70 @@
+{
+  "topics": [
+    {
+      "label": "Ancien Testament",
+      "abbrev": "at",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a1 a1-s1", "a1 a1-s1", "a2 a2-s1", "a2 a2-s1"]
+    },
+    {
+      "label": "Nouveau Testament",
+      "abbrev": "nt",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a2 a2-s3", "a2 a2-s3", "a1 a1-s1", "a1 a1-s1"]
+    },
+    {
+      "label": "Géographie Biblique",
+      "abbrev": "gb",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a1 a1-s2", "a1 a1-s2", "", ""]
+    },
+    {
+      "label": "Hébreu Biblique",
+      "abbrev": "hb",
+      "thursday": ["", "", "", ""],
+      "saturday": ["", "", "a2 a2-s2", "a2 a2-s2"]
+    },
+    {
+      "label": "Grec Koinè",
+      "abbrev": "gk",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a2 a2-s1", "a2 a2-s1", "", ""]
+    },
+    {
+      "label": "Histoire d'Israël",
+      "abbrev": "hi",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a1 a1-s3", "a1 a1-s3", "a2 a2-s3", "a2 a2-s3"]
+    },
+    {
+      "label": "Histoire de l'Eglise",
+      "abbrev": "he",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a2 a2-s4", "a2 a2-s4", "", ""]
+    },
+    {
+      "label": "Ethique Biblique",
+      "abbrev": "eb",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a2 a2-s1", "a2 a2-s1", "", ""]
+    },
+    {
+      "label": "Hérésiologie",
+      "abbrev": "her",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a1 a1-s4", "a1 a1-s4", "a2 a2-s4", "a2 a2-s4"]
+    },
+    {
+      "label": "Théologie Systématique",
+      "abbrev": "ts",
+      "thursday": ["", "", "", ""],
+      "saturday": ["a2 a2-s2", "a2 a2-s2", "a1 a1-s2 a1-s4", "a1 a1-s2 a1-s4"]
+    },
+    {
+      "label": "Bibliologie",
+      "abbrev": "bib",
+      "thursday": ["", "", "", ""],
+      "saturday": ["", "", "a1 a1-s3", "a1 a1-s3"]
+    }
+  ]
+}

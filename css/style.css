@@ -1,0 +1,260 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:  "header header header"
+                        "schedule schedule promoBts";
+  gap: 10px;
+  min-width: 480px;
+  background: #000;
+  text-align: center;
+  font-family: sans-serif;
+  color: #333;
+  opacity: 0;
+  transition: all 300ms;
+}
+
+header {
+  grid-area: header;
+  position: relative;
+  bottom: -20px;
+}
+
+.appears {
+  opacity: 1;
+  background: #eee;
+}
+
+.grid-container.schedule {
+  display: grid;
+  grid-area: schedule;
+  grid-template-columns: 1fr 3fr;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* GRID HEADER */
+.day {
+  border: 2px solid #333;
+  border-bottom-width: 0;
+  grid-column: 2;
+}
+.day { /* days cells */
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+.day div { /* day name */
+  grid-column: 1 / -1;
+  padding-top: 8px;
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  font-weight: bold;
+}
+.day span {
+  grid-row: 2;
+  border: 1px solid #888;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  font-size: 0.9rem;
+  padding: 2px;
+}
+.day span:nth-child(2),
+.day span:last-child {
+  border-left: none;
+  border-right: none;
+}
+
+/* GRID TOPICS */
+.topic {
+  grid-column: 1;
+  height: 40px;
+  padding: 4px;
+  border: 2px solid #333;
+  border-right: 0;
+  border-bottom: 0;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* COLORS CELLS */
+.color-cell { /* colors cells */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 2 / -1;
+}
+/* .color-cell:last-child { */
+  /* border-bottom: none; */
+/* } */
+  .day + .topic + div > div {
+    border-top: 2px solid #333;
+  }
+  .color-cell div {
+    border: 1px solid #888;
+    border-bottom: none;
+  }
+  .color-cell div:first-child {
+    border-left-width: 2px;
+    border-left-color: #333;
+  }
+  .color-cell div:not(:last-child) {
+    border-right-width: 0;
+  }
+  .color-cell div:nth-child(5) {
+    border-left: 2px solid #333;
+  }
+  .color-cell div:last-child {
+    border-right-width: 2px;
+    border-right-color: #333;
+  }
+  .color-cell:last-child div {
+    border-bottom: 2px solid #333;
+  }
+
+/* Courses colors */
+.color-cell span {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.a1-s1, .a1-s2, .a1-s3, .a1-s4,
+.a2-s1, .a2-s2, .a2-s3, .a2-s4,
+.a3-s1, .a3-s2, .a3-s3, .a3-s4 {
+  opacity: 0.3;
+}
+
+.a1-s1 { background: hsl(197, 88%, 85%); }
+.a1-s2 { background: hsl(197, 89%, 60%); }
+.a1-s3 { background: hsl(197, 89%, 35%); }
+.a1-s4 { background: hsl(197, 89%, 10%); }
+
+.a2-s1 { background: hsl(352, 100%, 85%); }
+.a2-s2 { background: hsl(352, 100%, 60%); }
+.a2-s3 { background: hsl(352, 100%, 35%); }
+.a2-s4 { background: hsl(352, 100%, 10%); }
+
+.a3-s1 { background: hsl(146, 87%, 85%); }
+.a3-s2 { background: hsl(146, 87%, 60%); }
+.a3-s3 { background: hsl(146, 87%, 35%); }
+.a3-s4 { background: hsl(146, 87%, 10%); }
+
+/* Controls promo bts colors */
+input {
+  grid-area: promoBts;
+  /* display: inline-block; */
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #999;
+  box-shadow: 1px 1px 1px #000;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px #ddd;
+  transition: 90ms;
+  width: 90%;
+  height: 30px;
+}
+input:focus { outline: none !important; transform: scale(0.9); }
+input[class*=a1]:focus { box-shadow: 0 0 10px hsl(197, 88%, 60%); }
+input[class*=a2]:focus { box-shadow: 0 0 10px hsl(352, 100%, 60%); }
+input[class*=a3]:focus { box-shadow: 0 0 10px hsl(146, 87%, 60%); }
+input[class*=a1-s1] { margin-top: 100px; background: hsl(197, 88%, 85%); }
+input[class*=a1-s2] { margin-top: 150px; background: hsl(197, 88%, 60%); }
+input[class*=a1-s3] { margin-top: 200px; background: hsl(197, 88%, 35%); }
+input[class*=a1-s4] { margin-top: 250px; background: hsl(197, 88%, 10%); }
+input[class*=a2-s1] { margin-top: 300px; background: hsl(352, 100%, 85%); }
+input[class*=a2-s2] { margin-top: 350px; background: hsl(352, 100%, 60%); }
+input[class*=a2-s3] { margin-top: 400px; background: hsl(352, 100%, 35%); }
+input[class*=a2-s4] { margin-top: 450px; background: hsl(352, 100%, 10%); }
+input[class*=a3-s1] { margin-top: 500px; background: hsl(146, 87%, 85%); }
+input[class*=a3-s2] { margin-top: 550px; background: hsl(146, 87%, 60%); }
+input[class*=a3-s3] { margin-top: 600px; background: hsl(146, 87%, 35%); }
+input[class*=a3-s4] { margin-top: 650px; background: hsl(146, 87%, 10%); }
+
+/* PROMO 1 */
+.control-a1-s1:focus ~ .grid-container .a1-s1 {
+  background: hsl(197, 88%, 85%);
+  opacity: 1;
+}
+.control-a1-s1:focus ~ .grid-container .color-cell span:not(.a1-s1) {
+  opacity: 0;
+}
+.control-a1-s2:focus ~ .grid-container .a1-s2 {
+  background: hsl(197, 88%, 60%);
+  opacity: 1;
+}
+.control-a1-s2:focus ~ .grid-container .color-cell span:not(.a1-s2) {
+  opacity: 0;
+}
+.control-a1-s3:focus ~ .grid-container .a1-s3 {
+  background: hsl(197, 88%, 35%);
+  opacity: 1;
+}
+.control-a1-s3:focus ~ .grid-container .color-cell span:not(.a1-s3) {
+  opacity: 0;
+}
+.control-a1-s4:focus ~ .grid-container .a1-s4 {
+  background: hsl(197, 88%, 10%);
+  opacity: 1;
+}
+.control-a1-s4:focus ~ .grid-container .color-cell span:not(.a1-s4) {
+  opacity: 0;
+}
+/* PROMO 2 */
+.control-a2-s1:focus ~ .grid-container .a2-s1 {
+  background: hsl(352, 100%, 85%);
+  opacity: 1;
+}
+.control-a2-s1:focus ~ .grid-container .color-cell span:not(.a2-s1) {
+  opacity: 0;
+}
+.control-a2-s2:focus ~ .grid-container .a2-s2 {
+  background: hsl(352, 100%, 60%);
+  opacity: 1;
+}
+.control-a2-s2:focus ~ .grid-container .color-cell span:not(.a2-s2) {
+  opacity: 0;
+}
+.control-a2-s3:focus ~ .grid-container .a2-s3 {
+  background: hsl(352, 100%, 35%);
+  opacity: 1;
+}
+.control-a2-s3:focus ~ .grid-container .color-cell span:not(.a2-s3) {
+  opacity: 0;
+}
+.control-a2-s4:focus ~ .grid-container .a2-s4 {
+  background: hsl(352, 100%, 10%);
+  opacity: 1;
+}
+.control-a2-s4:focus ~ .grid-container .color-cell span:not(.a2-s4) {
+  opacity: 0;
+}
+/* PROMO 3 */
+.control-a3-s1:focus ~ .grid-container .a3-s1 {
+  background: hsl(146, 87%, 85%);
+  opacity: 1;
+}
+.control-a3-s1:focus ~ .grid-container .color-cell span:not(.a3-s1) {
+  opacity: 0;
+}
+.control-a3-s2:focus ~ .grid-container .a3-s2 {
+  background: hsl(146, 87%, 60%);
+  opacity: 1;
+}
+.control-a3-s2:focus ~ .grid-container .color-cell span:not(.a3-s2) {
+  opacity: 0;
+}
+.control-a3-s3:focus ~ .grid-container .a3-s3 {
+  background: hsl(146, 87%, 35%);
+  opacity: 1;
+}
+.control-a3-s3:focus ~ .grid-container .color-cell span:not(.a3-s3) {
+  opacity: 0;
+}
+.control-a3-s4:focus ~ .grid-container .a3-s4 {
+  background: hsl(146, 87%, 10%);
+  opacity: 1;
+}
+.control-a3-s4:focus ~ .grid-container .color-cell span:not(.a3-s4) {
+  opacity: 0;
+}
