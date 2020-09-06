@@ -7,7 +7,7 @@ createPromotionsButtons(2);
 // TMP
 deleteBorderFromLastRow();
 
-fetch("/data.json").then(res => res.json()).then(
+fetch("data.json").then(res => res.json()).then(
   data => {
     const { topics } = data;
     
