@@ -1,6 +1,7 @@
 const schedule = document.querySelector('.schedule');
 const firstDataCell = document.querySelector('.color-cell');
 
+setPromoYear();
 createPromotionsButtons(2);
 
 // TMP
@@ -23,30 +24,27 @@ fetch("/data.json").then(res => res.json()).then(
 
       const topicRow = document.createElement('div');
       topicRow.className = `color-cell ${abbrev}`;
-      console.log(topicRow);
 
       // buildCellsForThursday(topicRow, thursday);
       buildCellsForSaturday(topicRow, saturday);
 
       schedule.appendChild(topicRow);
-
-// <div class="color-cell at">
-//   <!-- Jeudi -->
-//   <!-- <div><span class="a3 a3-s2"></span></div>
-//   <div><span class="a3 a3-s2"></span></div>
-//   <div><span class="a1 a1-s1 a1-s3"></span></div>
-//   <div><span class="a1 a1-s1 a1-s3"></span></div> -->
-//   <!-- Samedi -->
-//   <div><span class=""></span></div>
-//   <div><span class=""></span></div>
-//   <div><span class="a3 a3-s1"></span></div>
-//   <div><span class="a3 a3-s1"></span></div>
-// </div>
     });
 
     document.body.classList.add('appears');
   }
 ).catch(console.log);
+
+
+// FUNCTIONS
+function setPromoYear() {
+  const promoYearEls = document.querySelectorAll('.promo-year');
+  const currentYear = new Date().getFullYear();
+
+  promoYearEls.forEach(el => {
+    el.innerText += `${currentYear}-${currentYear+1}`;
+  });
+}
 
 function createPromotionsButtons(nb) {
   for (let promo = 1; promo <= nb; promo++) {
