@@ -4,13 +4,24 @@ body {
   grid-template-areas:  "header header header"
                         "schedule schedule promoBts";
   gap: 10px;
-  min-width: 480px;
+  /* min-width: 480px; */
   background: #000;
   text-align: center;
   font-family: sans-serif;
   color: #333;
   opacity: 0;
   transition: all 300ms;
+}
+
+@media (max-width: 480px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-template-areas:  "header"
+                          "promoBts"
+                          "schedule";
+  }
 }
 
 header {
