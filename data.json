@@ -64,7 +64,7 @@
       "label": "Bibliologie",
       "abbrev": "bib",
       "thursday": ["", "", "", ""],
-      "saturday": ["", "", "a1 a1-s3", "a1 a1-s3"]
+      "saturday": ["", "", "a1 a2 a1-s3 a2-s2", "a1 a2 a1 a1-s3 a2-s2"]
     }
   ]
 }
